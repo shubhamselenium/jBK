@@ -1,0 +1,143 @@
+.............First_Commit.............
+package com.design.factory;
+
+import com.design.model.Bike;
+import com.design.model.Scooter;
+import com.design.model.Vehicle;
+
+public class VehicleFactory {
+
+	public static Vehicle getVehicle(String type, String ss, String ee, String tt){
+		if("Scooter".equalsIgnoreCase(type)) 
+			return new Scooter(ss, ee, tt);
+		else if("Bike".equalsIgnoreCase(type)) 
+			return new Bike(ss, ee, tt);
+		
+		return null;
+	}
+}
+
+
+package com.design.model;
+
+public abstract class Vehicle {
+	
+	public abstract String getSpeed();
+	public abstract String getElectric();
+	public abstract String getBattery();
+	
+	
+	public String toString(){
+		return "Speed= "+this.getSpeed()+", Electric="+this.getElectric()+", Battery="+this.getBattery();
+	}
+}
+
+
+package com.design.model;
+
+public class Scooter extends Vehicle {
+
+	private String SS;
+	private String EE;
+	private String TT;
+	
+	public Scooter(String ss, String ee, String tt){
+		this.SS=ss;
+		this.EE=ee;
+		this.TT=tt;
+	}
+	
+	public String getSpeed() {
+		return this.SS;
+	}
+
+
+	public String getElectric() {
+		return this.EE;
+	}
+
+		public String getBattery() {
+		return this.TT;
+	}
+
+}
+
+package com.design.model;
+
+public class Bike extends Vehicle {
+
+	private String SS;
+	private String EE;
+	private String TT;
+	
+	public Bike(String ss, String ee, String tt){
+		this.SS=ss;
+		this.EE=ee;
+		this.TT=tt;
+	}
+	
+	public String getSpeed() {
+		return this.SS;
+	}
+
+	
+	public String getElectric() {
+		return this.EE;
+	}
+
+
+	public String getBattery() {
+		return this.TT;
+	}
+
+}
+
+package com.design.factory;
+
+import com.design.model.Bike;
+import com.design.model.Scooter;
+import com.design.model.Vehicle;
+
+public class VehicleFactory {
+
+	public static Vehicle getVehicle(String type, String ss, String ee, String tt){
+		if("Scooter".equalsIgnoreCase(type)) 
+			return new Scooter(ss, ee, tt);
+		else if("Bike".equalsIgnoreCase(type)) 
+			return new Bike(ss, ee, tt);
+		
+		return null;
+	}
+}
+
+
+package com.design.test;
+
+import com.design.factory.VehicleFactory;
+import com.design.model.Vehicle;
+
+public class TestVehicleFactory {
+
+	public static void main(String[] args) {
+		
+		Vehicle Scooter = VehicleFactory.getVehicle("Scooter","60","12V","Honda");
+		
+		Vehicle Bike = VehicleFactory.getVehicle("Bike","80","13V","Yamaha");
+		
+		//---Part-1
+		System.out.println("..........Scooter-Line-1");
+		System.out.println("Scooter Config::"+Scooter);
+		
+		//---Part-2 
+		System.out.println("..........Bike-Line-2");
+        System.out.println("Bike Config::"+Bike);
+	}
+
+}
+
+
+
+
+
+
+
